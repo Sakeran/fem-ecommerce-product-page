@@ -1,5 +1,9 @@
 import type { Component } from 'solid-js';
 
+import { getProduct } from './data/products';
+
+const dummyProduct = getProduct();
+
 const App: Component = () => {
   return (
     <div className="">
