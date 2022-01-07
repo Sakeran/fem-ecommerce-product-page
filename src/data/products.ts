@@ -1,4 +1,4 @@
-interface IProductData {
+export interface IProductData {
   productName: string;
   productDescription: string;
 
@@ -11,7 +11,7 @@ interface IProductData {
   images: IProductImage[];
 }
 
-interface IProductImage {
+export interface IProductImage {
   id: number;
   href: string;
   thumbnailHref: string;
