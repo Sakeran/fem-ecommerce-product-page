@@ -1,7 +1,9 @@
 import type { Component } from "solid-js";
 
 import { getProduct } from "./data/products";
-import { setProduct, productPage } from "./data/appState";
+import { setProduct } from "./data/appState";
+
+import Header from "./components/Header";
 
 // Set up dummy product
 const dummyProduct = getProduct();
@@ -16,6 +18,7 @@ const App: Component = () => {
       >
         Skip to main content
       </a>
+      <Header />
       <main id="main-content">
         <p>This is the main content</p>
       </main>
