@@ -1,6 +1,7 @@
 import { Component, createSignal, mergeProps } from "solid-js";
 import menuIcon from "../assets/icons/icon-menu.svg";
 import closeIcon from "../assets/icons/icon-close.svg";
+import HeaderUserInfo from "./HeaderUserInfo";
 
 export default function Header() {
   const [expanded, setExpanded] = createSignal(false);
@@ -54,10 +55,8 @@ export default function Header() {
           <NavItem text="Contact" />
         </ul>
       </nav>
-      <div class="flex ml-auto">
-        {/* Stub */}
-        <div class="aspect-square bg-gray-100 w-6"></div>
-        <div class="aspect-square bg-gray-100 w-6"></div>
+      <div className="ml-auto">
+        <HeaderUserInfo />
       </div>
     </header>
   );

@@ -1,13 +1,14 @@
 import type { Component } from "solid-js";
 
 import { getProduct } from "./data/products";
-import { setProduct } from "./data/appState";
+import { setProduct, setUserAvatar } from "./data/appState";
 
 import Header from "./components/Header";
 
 // Set up dummy product
 const dummyProduct = getProduct();
 setProduct(dummyProduct);
+setUserAvatar("/images/image-avatar.png");
 
 const App: Component = () => {
   return (
