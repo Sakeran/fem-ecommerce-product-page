@@ -22,11 +22,10 @@ export default function HeaderUserInfo() {
         </button>
         <div
           id="user-cart"
-          class="absolute inset-x-2 top-[calc(100%_+_0.5rem)] transition-all ease-in-out"
+          class="absolute inset-x-2 top-[calc(100%_+_0.5rem)] transition-opacity ease-in-out flex justify-end"
           classList={{
             "opacity-0": !cartVisible(),
             "pointer-events-none": !cartVisible(),
-            "scale-0": !cartVisible()
           }}
         >
           <Cart />
