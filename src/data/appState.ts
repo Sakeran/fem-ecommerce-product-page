@@ -105,3 +105,11 @@ export function removeProductFromCart(product: IProductData) {
 export function clearCart() {
   setAppState("user", "cart", "items", []);
 }
+
+/**
+ * Sets the product visible on the product page.
+ * @param product Product to add
+ */
+export function setProduct(product: IProductData) {
+  setAppState("productPage", "product", product);
+}
