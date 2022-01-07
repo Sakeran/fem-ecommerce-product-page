@@ -9,7 +9,7 @@ export default function Header() {
   const toggleMenu = () => setExpanded((exp) => !exp);
 
   return (
-    <header class="pt-5 pb-7 px-6 flex items-center gap-4">
+    <header class="relative pt-5 pb-7 px-6 flex items-center gap-4">
         <button
           aria-controls="primary-nav"
           aria-expanded={expanded()}
