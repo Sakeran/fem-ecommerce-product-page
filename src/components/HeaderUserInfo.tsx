@@ -10,7 +10,7 @@ export default function HeaderUserInfo() {
   const toggleCart = () => setCartVisible((v) => !v);
 
   return (
-    <div class="flex items-center gap-5">
+    <div class="flex items-center gap-5 md:gap-11">
       <div class="contents">
         <button
           aria-controls="user-cart"
@@ -31,14 +31,14 @@ export default function HeaderUserInfo() {
           <Cart />
         </div>
       </div>
-      <div class="relative w-6 aspect-square rounded-full overflow-hidden">
+      <button class="relative w-6 aspect-square rounded-full overflow-hidden sm:w-[3.125rem] sm:border-2 sm:border-orange-500/0 sm:hover:border-orange-500 transition-colors">
         <Show
           when={currentUser().avatarImg}
           fallback={<div class="absolute bg-gray-400 inset-0"></div>}
         >
           <img src={currentUser().avatarImg} alt="User avatar" />
         </Show>
-      </div>
+      </button>
     </div>
   );
 }

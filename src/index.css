@@ -1,3 +1,9 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  .wrapper {
+    @apply box-content px-6 mx-auto max-w-[1440px];
+  }
+}
