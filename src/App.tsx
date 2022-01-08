@@ -4,6 +4,8 @@ import { getProduct } from "./data/products";
 import { setProduct, setUserAvatar } from "./data/appState";
 
 import Header from "./components/Header";
+import { ProductInfo } from "./components/ProductInfo";
+import { ProductGallery } from "./components/ProductGallery";
 
 // Set up dummy product
 const dummyProduct = getProduct();
@@ -21,7 +23,14 @@ const App: Component = () => {
       </a>
       <Header />
       <main id="main-content">
-        <p>This is the main content</p>
+        <div class="flex flex-col md:flex-row md:pt-[5.625rem]">
+          <div class="order-1 md:basis-1/2 md:grid md:place-items-center">
+            <ProductInfo />
+          </div>
+          <div class="md:basis-1/2 md:grid md:place-items-center">
+            <ProductGallery />
+          </div>
+        </div>
       </main>
     </>
   );
