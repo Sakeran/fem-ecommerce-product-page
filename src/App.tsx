@@ -23,7 +23,7 @@ const App: Component = () => {
       </a>
       <Header />
       <main id="main-content">
-        <div class="flex flex-col md:flex-row md:pt-[5.625rem]">
+        <div class="flex flex-col md:wrapper md:flex-row md:pt-[5.625rem] md:gap-[1.875rem]">
           <div class="order-1 md:basis-1/2 md:grid md:place-items-center">
             <ProductInfo />
           </div>
