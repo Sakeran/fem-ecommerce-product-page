@@ -23,13 +23,14 @@ export default function Header() {
         <img src="/images/logo.svg" alt="" />
       </div>
       <div
-        class="fixed bg-black/75 inset-0 transition-opacity duration-300 ease-in-out sm:hidden sm:pointer-events-none"
+        class="fixed bg-black/75 inset-0 transition-opacity duration-300 ease-in-out sm:hidden sm:pointer-events-none z-40"
         classList={{
           "opacity-100": expanded(),
           "opacity-0": !expanded(),
           "pointer-events-none": !expanded(),
         }}
-      ></div>
+        onClick={toggleMenu}
+      />
       <nav
         id="primary-nav"
         class="z-50 fixed left-0 top-0 bottom-0 bg-white min-w-[250px] p-6 flex flex-col gap-[3.25rem] transition-transform duration-200 ease-in-out sm:bg-none sm:static sm:translate-x-0 sm:p-0 sm:pt-10 sm:gap-8"

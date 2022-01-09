@@ -42,7 +42,7 @@ export function ProductGallery() {
             <span className="sr-only">Open Lightbox</span>
           </button>
         </div>
-        <div class="px-4 flex justify-between items-center row-start-1 col-start-1 z-20 md:hidden">
+        <div class="px-4 flex justify-between items-center row-start-1 col-start-1 z-10 md:hidden">
           <button
             onClick={selectPreviousImage}
             class="w-min h-min"
