@@ -8,6 +8,7 @@ module.exports = {
     colors: {
       // Neutrals
       white: "hsl(0, 0%, 100%)",
+      transparent: "transparent",
       black: "hsl(0, 0%, 0%)",
       gray: {
         100: "hsl(220, 14%, 13%)",
@@ -34,6 +35,10 @@ module.exports = {
       },
       boxShadow: {
         cart: "0 20px 50px -20px hsla(220, 14%, 13%, 0.5)"
+      },
+      borderRadius: {
+        "gallery-main": "0.9375rem",
+        xl: "0.625rem"
       }
     },
   },

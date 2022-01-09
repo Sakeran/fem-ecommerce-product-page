@@ -15,6 +15,8 @@ export function ProductGallery() {
   const selectNextImage = () =>
     setCurrentIndex((i) => Math.min(i + 1, productImages().length - 1));
 
+  const isCurrent = (i: number) => currentIndex() == i;
+
   const onFirstImage = () => currentIndex() == 0;
   const onLastImage = () => currentIndex() == productImages().length - 1;
 
@@ -29,18 +31,18 @@ export function ProductGallery() {
 
   return (
     <>
-      <div class="grid grid-cols-1 grid-rows-1">
-        <div class="overflow-x-hidden row-start-1 col-start-1">
+      <div class="grid grid-cols-1 grid-rows-1 md:mx-12 md:gap-8">
+        <div class="overflow-x-hidden row-start-1 col-start-1 md:rounded-gallery-main">
           <div
             ref={mainImageContainer}
             class="flex w-full transition-transform ease-in-out duration-300"
           >
             <For each={productImages()}>
               {(image, i) => (
-                <div data-gallery-id={i} class="basis-full shrink-0">
+                <div class="basis-full shrink-0">
                   <img
                     src={image.href}
-                    alt={`${productName} image ${i} of ${
+                    alt={`${productName()} image ${i() + 1} of ${
                       productImages().length
                     }`}
                   />
@@ -49,7 +51,7 @@ export function ProductGallery() {
             </For>
           </div>
         </div>
-        <div class="px-4 flex justify-between items-center row-start-1 col-start-1 z-20">
+        <div class="px-4 flex justify-between items-center row-start-1 col-start-1 z-20 md:hidden">
           <button
             onClick={selectPreviousImage}
             class="w-min h-min"
@@ -99,7 +101,29 @@ export function ProductGallery() {
             <span className="sr-only">View Next Image</span>
           </button>
         </div>
-        <div class="hidden">THUMBNAILS</div>
+        <div class="hidden md:flex md:flex-wrap md:gap-8 md:justify-center">
+          <For each={productImages()}>
+            {(img, i) => (
+              <button
+                class="rounded-lg overflow-hidden basis-[calc(25%-1.5rem)] rouded-xl border-2 border-transparent hover:[--thumbnail-opacity:0.5] focus-visible:[--thumbnail-opacity:0.5] focus-visible:outline-orange-500 outline-none transition-opacity"
+                classList={{
+                  "border-orange-500": isCurrent(i()),
+                }}
+                onClick={() => setCurrentIndex(i())}
+              >
+                <img
+                  src={img.thumbnailHref}
+                  alt=""
+                  class="opacity-[var(--thumbnail-opacity,_1)]"
+                  classList={{ "[--thumbnail-opacity:0.25]": isCurrent(i()) }}
+                />
+                <span className="sr-only">
+                  View image {i() + 1} of {productImages().length}.
+                </span>
+              </button>
+            )}
+          </For>
+        </div>
       </div>
       <div class="hidden">LIGHTBOX</div>
     </>

@@ -4,6 +4,6 @@
 
 @layer base {
   .wrapper {
-    @apply box-content px-6 mx-auto max-w-[1440px];
+    @apply box-content px-6 mx-auto max-w-[1110px];
   }
 }
