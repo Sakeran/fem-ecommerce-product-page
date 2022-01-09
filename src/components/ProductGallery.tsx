@@ -4,9 +4,13 @@ import prevIcon from "../assets/icons/icon-previous.svg";
 import nextIcon from "../assets/icons/icon-next.svg";
 
 import { productPage } from "../data/appState";
+import Lightbox from "./Lightbox";
+import ImageSlider from "./ImageSlider";
+import ImageThumbnails from "./ImageThumbnails";
 
 export function ProductGallery() {
   const [currentIndex, setCurrentIndex] = createSignal(0);
+  const [lightboxOn, setLightboxOn] = createSignal(false);
 
   const productImages = () => productPage().product?.images || [];
   const productName = () => productPage().product?.productName || "";
@@ -15,41 +19,28 @@ export function ProductGallery() {
   const selectNextImage = () =>
     setCurrentIndex((i) => Math.min(i + 1, productImages().length - 1));
 
-  const isCurrent = (i: number) => currentIndex() == i;
-
   const onFirstImage = () => currentIndex() == 0;
   const onLastImage = () => currentIndex() == productImages().length - 1;
 
-  let mainImageContainer: HTMLDivElement | undefined;
+  const toggleLightbox = () => setLightboxOn((v) => !v);
 
-  createEffect(() => {
-    if (!mainImageContainer) return;
-    mainImageContainer.style.transform = `translateX(-${
-      100 * currentIndex()
-    }%)`;
-  });
+  let lightboxScrim: HTMLDivElement | undefined;
 
   return (
     <>
       <div class="grid grid-cols-1 grid-rows-1 md:mx-12 md:gap-8">
-        <div class="overflow-x-hidden row-start-1 col-start-1 md:rounded-gallery-main">
-          <div
-            ref={mainImageContainer}
-            class="flex w-full transition-transform ease-in-out duration-300"
+        <div class="relative row-start-1 col-start-1">
+          <ImageSlider
+            images={productPage().product?.images ?? []}
+            currentImage={currentIndex()}
+            productName={productName()}
+          />
+          <button
+            class="hidden md:block absolute inset-0 w-full"
+            onClick={toggleLightbox}
           >
-            <For each={productImages()}>
-              {(image, i) => (
-                <div class="basis-full shrink-0">
-                  <img
-                    src={image.href}
-                    alt={`${productName()} image ${i() + 1} of ${
-                      productImages().length
-                    }`}
-                  />
-                </div>
-              )}
-            </For>
-          </div>
+            <span className="sr-only">Open Lightbox</span>
+          </button>
         </div>
         <div class="px-4 flex justify-between items-center row-start-1 col-start-1 z-20 md:hidden">
           <button
@@ -101,31 +92,26 @@ export function ProductGallery() {
             <span className="sr-only">View Next Image</span>
           </button>
         </div>
-        <div class="hidden md:flex md:flex-wrap md:gap-8 md:justify-center">
-          <For each={productImages()}>
-            {(img, i) => (
-              <button
-                class="rounded-lg overflow-hidden basis-[calc(25%-1.5rem)] rouded-xl border-2 border-transparent hover:[--thumbnail-opacity:0.5] focus-visible:[--thumbnail-opacity:0.5] focus-visible:outline-orange-500 outline-none transition-opacity"
-                classList={{
-                  "border-orange-500": isCurrent(i()),
-                }}
-                onClick={() => setCurrentIndex(i())}
-              >
-                <img
-                  src={img.thumbnailHref}
-                  alt=""
-                  class="opacity-[var(--thumbnail-opacity,_1)]"
-                  classList={{ "[--thumbnail-opacity:0.25]": isCurrent(i()) }}
-                />
-                <span className="sr-only">
-                  View image {i() + 1} of {productImages().length}.
-                </span>
-              </button>
-            )}
-          </For>
+        <div className="hidden md:block">
+          <ImageThumbnails
+            images={productPage().product?.images ?? []}
+            currentImage={currentIndex()}
+            productName={productName()}
+            onSelection={(i) => setCurrentIndex(i)}
+          />
         </div>
       </div>
-      <div class="hidden">LIGHTBOX</div>
+      <div
+        ref={lightboxScrim}
+        class="hidden md:grid md:place-items-center md:fixed md:inset-0 md:bg-black/75 z-50 transition-opacity ease-in-out duration-300"
+        classList={{
+          "opacity-0": !lightboxOn(),
+          "pointer-events-none": !lightboxOn(),
+        }}
+        onClick={(e) => e.target === lightboxScrim && toggleLightbox()}
+      >
+        <Lightbox onClose={toggleLightbox} />
+      </div>
     </>
   );
 }
