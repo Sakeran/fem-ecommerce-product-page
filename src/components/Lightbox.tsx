@@ -17,8 +17,6 @@ export default function Lightbox(props: LightboxProps) {
   const selectNextImage = () =>
     setCurrentIndex((i) => Math.min(i + 1, productImages().length - 1));
 
-  const isCurrent = (i: number) => currentIndex() == i;
-
   const onFirstImage = () => currentIndex() == 0;
   const onLastImage = () => currentIndex() == productImages().length - 1;
 
@@ -51,7 +49,11 @@ export default function Lightbox(props: LightboxProps) {
           />
         </div>
         <div class="row-start-2 col-start-1 z-10 flex items-center justify-between">
-          <button onClick={selectPreviousImage} class="-translate-x-1/2 text-gray-100 hover:text-orange-500 focus-visible:text-orange-500 transition-colors duration-150">
+          <button
+            disabled={onFirstImage()}
+            onClick={selectPreviousImage}
+            class="-translate-x-1/2 text-gray-100 hover:text-orange-500 focus-visible:text-orange-500 duration-150 transition-all disabled:opacity-25"
+          >
             <svg
               width="56"
               height="56"
@@ -69,7 +71,11 @@ export default function Lightbox(props: LightboxProps) {
 
             <span className="sr-only">Previous Image</span>
           </button>
-          <button onClick={selectNextImage} class="translate-x-1/2 text-gray-100 hover:text-orange-500 focus-visible:text-orange-500 transition-colors duration-150">
+          <button
+            disabled={onLastImage()}
+            onClick={selectNextImage}
+            class="translate-x-1/2 text-gray-100 hover:text-orange-500 focus-visible:text-orange-500 duration-150 transition-all disabled:opacity-25"
+          >
             <svg
               width="56"
               height="56"
