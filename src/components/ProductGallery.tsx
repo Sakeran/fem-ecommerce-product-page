@@ -1,8 +1,5 @@
 import { createEffect, createSignal, For } from "solid-js";
 
-import prevIcon from "../assets/icons/icon-previous.svg";
-import nextIcon from "../assets/icons/icon-next.svg";
-
 import { productPage } from "../data/appState";
 import Lightbox from "./Lightbox";
 import ImageSlider from "./ImageSlider";

@@ -34,7 +34,8 @@ module.exports = {
         "4.5xl": ["2.75rem", "1.1"],
       },
       boxShadow: {
-        cart: "0 20px 50px -20px hsla(220, 14%, 13%, 0.5)"
+        cart: "0 20px 50px -20px hsla(220, 14%, 13%, 0.5)",
+        cta: "0 20px 50px -20px hsla(26, 100%, 55%, 0.5)"
       },
       borderRadius: {
         "gallery-main": "0.9375rem",
