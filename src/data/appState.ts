@@ -82,7 +82,9 @@ export function setUserAvatar(href: string) {
  */
 export function addItemToCart(product: IProductData, quantity: number) {
   setAppState("user", "cart", "items", (lines) => {
-    const updatedLines = lines.filter((i) => i.product !== product);
+    const updatedLines = lines.filter(
+      (i) => i.product.productName !== product.productName
+    );
     updatedLines.push({ product, quantity });
     return updatedLines;
   });
@@ -94,7 +96,9 @@ export function addItemToCart(product: IProductData, quantity: number) {
  */
 export function removeProductFromCart(product: IProductData) {
   setAppState("user", "cart", "items", (lines) => {
-    const updatedLines = lines.filter((line) => line.product !== product);
+    const updatedLines = lines.filter(
+      (line) => line.product.productName !== product.productName
+    );
     return updatedLines;
   });
 }
