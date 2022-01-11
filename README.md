@@ -1,34 +1,17 @@
-## Usage
+# fem-ecommerce-product-page
 
-Those templates dependencies are maintained via [pnpm](https://pnpm.io) via `pnpm up -Lri`.
+This is a solution to the [E-commerce product page challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/ecommerce-product-page-UPsZ9MJp6). Frontend Mentor challenges help you improve your coding skills by building realistic projects.
 
-This is the reason you see a `pnpm-lock.yaml`. That being said, any package manager will work. This file can be safely be removed once you clone a template.
+## Notes
 
-```bash
-$ npm install # or pnpm install or yarn install
-```
+(January 11th, 2022)
 
-### Learn more on the [Solid Website](https://solidjs.com) and come chat with us on our [Discord](https://discord.com/invite/solidjs)
+This was my first FrontEndMentor project in a few weeks, after having spent some time focusing on personal projects. My tools here weren't anything out of the ordinary for me: Vite, SolidJS, and TailwindCSS. When I started the project, I'd intended to enchance a few parts of the design with some animation library, but ultimately stuck with simple CSS-based transitions after running out of time.
 
-## Available Scripts
+I didn't particularly struggle with this challenge, but I did make two interesting observations:
 
-In the project directory, you can run:
+First, the "quantity selector" component was interesting, mostly because I hadn't needed to implement one from scratch before. I ended up referencing the web component implemented by Shopify's [Dawn theme](https://github.com/Shopify/dawn). My solution was slightly different from theirs, but it taught me a bit about how to approach building custom input elements.
 
-### `npm dev` or `npm start`
+Second, my implementation of the page header was not as clean as it could have been. This mostly came down to the fact that I'm overly-reliant on padding to create whitespace, which in this case made centering the header contents more difficult than it should have been. It's good to respect intrinsic dimensions, but I'm maybe too strict about not specifying parent heights. In cases like this, a min-height would have simplified matters greatly.
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.<br>
-
-### `npm run build`
-
-Builds the app for production to the `dist` folder.<br>
-It correctly bundles Solid in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
-
-## Deployment
-
-You can deploy the `dist` folder to any static host provider (netlify, surge, now, etc.)
+[A live version of this project can be found here.](https://nutty-shape.surge.sh/)
