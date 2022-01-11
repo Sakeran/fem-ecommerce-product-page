@@ -13,12 +13,18 @@ export default function HeaderUserInfo() {
     <div class="flex items-center gap-5 md:gap-11">
       <div class="contents">
         <button
+          class="relative"
           aria-controls="user-cart"
           aria-expanded={cartVisible()}
           onClick={toggleCart}
         >
           <img src={cartIcon} alt="" />
           <span class="sr-only">View Cart</span>
+          <Show when={currentUser().cart.items.length >= 1}>
+            <div class="absolute top-[-0.375rem] right-[-0.375rem] w-5 h-3 bg-orange-500 rounded-md text-white font-bold grid place-items-center text-[0.625rem] leading-none">
+              {currentUser().cart.items.length}
+            </div>
+          </Show>
         </button>
         <div
           id="user-cart"
