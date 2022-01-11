@@ -27,7 +27,7 @@ export default function HeaderUserInfo() {
           <span class="sr-only">View Cart</span>
           <Show when={currentUser().cart.items.length >= 1}>
             <div class="absolute top-[-0.375rem] right-[-0.375rem] w-5 h-3 bg-orange-500 rounded-md text-white font-bold grid place-items-center text-[0.625rem] leading-none">
-              {currentUser().cart.items.length}
+              {currentUser().cart.items.reduce((acc, line) => acc + line.quantity, 0)}
             </div>
           </Show>
         </button>
