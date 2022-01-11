@@ -23,11 +23,11 @@ const App: Component = () => {
       </a>
       <Header />
       <main id="main-content">
-        <div class="flex flex-col md:wrapper md:flex-row md:pt-[5.625rem] md:gap-[1.875rem]">
-          <div class="order-1 md:basis-1/2 md:grid md:place-items-center">
+        <div class="flex flex-col lg:wrapper lg:flex-row lg:pt-[5.625rem] lg:gap-[1.875rem]">
+          <div class="order-1 lg:basis-1/2 lg:grid lg:place-items-center">
             <ProductInfo />
           </div>
-          <div class="md:basis-1/2 md:grid md:place-items-center">
+          <div class="lg:basis-1/2 lg:grid lg:place-items-center">
             <ProductGallery />
           </div>
         </div>

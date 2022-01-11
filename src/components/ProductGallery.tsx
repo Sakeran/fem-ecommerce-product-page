@@ -25,7 +25,7 @@ export function ProductGallery() {
 
   return (
     <>
-      <div class="grid grid-cols-1 grid-rows-1 md:mx-12 md:gap-8">
+      <div class="grid grid-cols-1 grid-rows-1 lg:mx-12 md:gap-8 md:p-8 lg:p-0">
         <div class="relative row-start-1 col-start-1">
           <ImageSlider
             images={productPage().product?.images ?? []}
@@ -33,7 +33,7 @@ export function ProductGallery() {
             productName={productName()}
           />
           <button
-            class="hidden md:block absolute inset-0 w-full"
+            class="hidden lg:block absolute inset-0 w-full"
             onClick={toggleLightbox}
           >
             <span className="sr-only">Open Lightbox</span>
@@ -100,7 +100,7 @@ export function ProductGallery() {
       </div>
       <div
         ref={lightboxScrim}
-        class="hidden md:grid md:place-items-center md:fixed md:inset-0 md:bg-black/75 z-50 transition-opacity ease-in-out duration-300"
+        class="hidden lg:grid lg:place-items-center lg:fixed lg:inset-0 lg:bg-black/75 z-50 transition-opacity ease-in-out duration-300"
         classList={{
           "opacity-0": !lightboxOn(),
           "pointer-events-none": !lightboxOn(),
